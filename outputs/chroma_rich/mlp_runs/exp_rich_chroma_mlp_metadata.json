@@ -1,0 +1,42 @@
+{
+  "generated_at": "2026-06-28T21:27:40.929724+00:00",
+  "command": "/Users/zach.walton/Dev/shule/cs6320/assignment_5/train_key_chroma.py --run-name exp_rich_chroma_mlp --clip-sec 15 --learning-rate 0.00275 --epochs 30 --scale --quiet --feature-variant rich --output-dir /Users/zach.walton/Dev/shule/cs6320/assignment_6/outputs/chroma_rich/mlp_runs --seed 42 --hidden-dim 128",
+  "run_name": "exp_rich_chroma_mlp",
+  "clip_sec": 15,
+  "epochs_requested": 30,
+  "epochs_ran": 9,
+  "batch_size": 64,
+  "hidden_dim": 128,
+  "batch_log_interval": 0,
+  "eval_log_interval": 0,
+  "dropout": 0.0,
+  "learning_rate": 0.00275,
+  "weight_decay": 0.0,
+  "patience": 8,
+  "seed": 42,
+  "device": "mps",
+  "device_detection": {
+    "cuda_available": false,
+    "mps_available": true
+  },
+  "device_preference": "auto",
+  "input": {
+    "feature_type": "chroma_cqt_rich",
+    "input_dim": 84,
+    "description": "4x12 binned means + 12 stds + 24 K-S correlations",
+    "feature_variant": "rich",
+    "standardized": true
+  },
+  "n_train": 6285,
+  "n_val": 1350,
+  "n_test": 1334,
+  "n_classes": 24,
+  "best_val_loss": 2.072769815271551,
+  "test_loss": 2.0149272282918296,
+  "test_accuracy": 0.35157421289355323,
+  "test_macro_f1": 0.3210511756237504,
+  "history_csv": "/Users/zach.walton/Dev/shule/cs6320/assignment_6/outputs/chroma_rich/mlp_runs/exp_rich_chroma_mlp_history.csv",
+  "training_log": "/Users/zach.walton/Dev/shule/cs6320/assignment_6/outputs/chroma_rich/mlp_runs/exp_rich_chroma_mlp.log",
+  "checkpoint_pt": "/Users/zach.walton/Dev/shule/cs6320/assignment_6/outputs/chroma_rich/mlp_runs/exp_rich_chroma_mlp_checkpoint.pt",
+  "total_elapsed_sec": 369.7
+}

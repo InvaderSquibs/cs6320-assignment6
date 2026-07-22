@@ -1,0 +1,12 @@
+# Local ignores for Assignment 6
+
+.DS_Store
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+dist/
+*.pt
+*.pth
+slurm-*.out
+slurm-*.err

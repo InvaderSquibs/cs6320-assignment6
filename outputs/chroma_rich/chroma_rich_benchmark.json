@@ -1,0 +1,76 @@
+{
+  "generated_at": "2026-06-28T21:27:41.317610+00:00",
+  "feature_recipe": {
+    "input_dim": 84,
+    "components": [
+      "4 time bins x 12 pitch means",
+      "12 global pitch stds",
+      "24 K-S major/minor profile correlations"
+    ]
+  },
+  "results": [
+    {
+      "feature_set": "rich_84d",
+      "input_dim": 84,
+      "model": "Logistic regression",
+      "train_accuracy": 0.5306024598707525,
+      "val_accuracy": 0.39970717423133234,
+      "test_accuracy": 0.3505974152645696,
+      "test_macro_f1": 0.3144185217003898
+    },
+    {
+      "feature_set": "rich_84d",
+      "input_dim": 84,
+      "model": "HistGradientBoosting",
+      "train_accuracy": 1.0,
+      "val_accuracy": 0.42752562225475843,
+      "test_accuracy": 0.42599366008290657,
+      "test_macro_f1": 0.3619240848100962
+    },
+    {
+      "feature_set": "rich_84d",
+      "input_dim": 84,
+      "model": "Chroma MLP (scaled)",
+      "train_accuracy": null,
+      "val_accuracy": 0.3785185185185185,
+      "test_accuracy": 0.35157421289355323,
+      "test_macro_f1": 0.3210511756237504
+    },
+    {
+      "feature_set": "baseline_24d",
+      "input_dim": 24,
+      "model": "Logistic regression",
+      "train_accuracy": 0.4809895833333333,
+      "val_accuracy": 0.4054580896686159,
+      "test_accuracy": 0.3462475633528264,
+      "test_macro_f1": 0.3132269147842042
+    },
+    {
+      "feature_set": "baseline_24d",
+      "input_dim": 24,
+      "model": "HistGradientBoosting",
+      "train_accuracy": 1.0,
+      "val_accuracy": 0.4026354319180087,
+      "test_accuracy": 0.4025359668373567,
+      "test_macro_f1": 0.3092160009618754
+    },
+    {
+      "feature_set": "baseline_24d",
+      "input_dim": 24,
+      "model": "Chroma MLP (unscaled)",
+      "train_accuracy": null,
+      "val_accuracy": 0.4156,
+      "test_accuracy": 0.3665667166416791,
+      "test_macro_f1": 0.3292556087744869
+    },
+    {
+      "feature_set": "baseline_24d",
+      "input_dim": 24,
+      "model": "Chroma MLP (scaled)",
+      "train_accuracy": null,
+      "val_accuracy": 0.4259,
+      "test_accuracy": 0.3470764617691154,
+      "test_macro_f1": 0.3094250746992909
+    }
+  ]
+}

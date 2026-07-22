@@ -1,0 +1,50 @@
+{
+  "generated_at": "2026-06-28T20:30:28.267798+00:00",
+  "command": "../assignment_6/train_key_chroma_tree.py --run-name exp6_chroma_tree",
+  "run_name": "exp6_chroma_tree",
+  "model_name": "HistGradientBoosting (chroma tabular)",
+  "clip_sec": 15,
+  "seed": 42,
+  "input": {
+    "feature_type": "chroma_cqt_mean_std",
+    "input_dim": 24,
+    "description": "12 pitch-class means + 12 stds from librosa chroma_cqt",
+    "standardized": true
+  },
+  "model_settings": {
+    "classifier": "HistGradientBoostingClassifier",
+    "max_iter": 200,
+    "max_depth": 8,
+    "learning_rate": 0.1,
+    "sample_weight": "chunk sample_weight column (1 / n_chunks per song)"
+  },
+  "metrics": [
+    {
+      "split": "train",
+      "n_chunks": 6285,
+      "loss": 0.00012085157156741472,
+      "accuracy": 1.0,
+      "macro_f1": 1.0
+    },
+    {
+      "split": "val",
+      "n_chunks": 1350,
+      "loss": 3.510812387988267,
+      "accuracy": 0.40263543191800877,
+      "macro_f1": 0.3348106183633151
+    },
+    {
+      "split": "test",
+      "n_chunks": 1334,
+      "loss": 3.3110069432218494,
+      "accuracy": 0.4025359668373567,
+      "macro_f1": 0.3092160009618754
+    }
+  ],
+  "test_accuracy": 0.4025359668373567,
+  "test_macro_f1": 0.3092160009618754,
+  "test_loss": 3.3110069432218494,
+  "val_accuracy": 0.40263543191800877,
+  "val_macro_f1": 0.3348106183633151,
+  "val_loss": 3.510812387988267
+}

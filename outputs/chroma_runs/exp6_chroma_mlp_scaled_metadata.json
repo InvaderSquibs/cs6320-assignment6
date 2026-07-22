@@ -1,0 +1,41 @@
+{
+  "generated_at": "2026-06-28T20:38:01.956710+00:00",
+  "command": "../assignment_5/train_key_chroma.py --run-name exp6_chroma_mlp_scaled --learning-rate 0.00275 --epochs 30 --scale --quiet --output-dir ../assignment_6/outputs/chroma_runs",
+  "run_name": "exp6_chroma_mlp_scaled",
+  "clip_sec": 15,
+  "epochs_requested": 30,
+  "epochs_ran": 11,
+  "batch_size": 64,
+  "hidden_dim": 64,
+  "batch_log_interval": 0,
+  "eval_log_interval": 0,
+  "dropout": 0.0,
+  "learning_rate": 0.00275,
+  "weight_decay": 0.0,
+  "patience": 8,
+  "seed": 42,
+  "device": "mps",
+  "device_detection": {
+    "cuda_available": false,
+    "mps_available": true
+  },
+  "device_preference": "auto",
+  "input": {
+    "feature_type": "chroma_cqt_mean_std",
+    "input_dim": 24,
+    "description": "12 pitch-class means + 12 stds from librosa chroma_cqt",
+    "standardized": true
+  },
+  "n_train": 6285,
+  "n_val": 1350,
+  "n_test": 1334,
+  "n_classes": 24,
+  "best_val_loss": 1.9944071823900396,
+  "test_loss": 2.085454918089367,
+  "test_accuracy": 0.34707646176911544,
+  "test_macro_f1": 0.3094250746992909,
+  "history_csv": "../assignment_6/outputs/chroma_runs/exp6_chroma_mlp_scaled_history.csv",
+  "training_log": "../assignment_6/outputs/chroma_runs/exp6_chroma_mlp_scaled.log",
+  "checkpoint_pt": "../assignment_6/outputs/chroma_runs/exp6_chroma_mlp_scaled_checkpoint.pt",
+  "total_elapsed_sec": 447.2
+}
