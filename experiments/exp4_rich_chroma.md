@@ -1,7 +1,6 @@
 # Experiment Report: rich chroma 84-d (Exp 4 — appendix)
 
 > **Reproducibility tag:** `seed=42` · clip `15s` · feature variant `rich`  
-> Post–main-comparison staged improvement: richer hand-built chroma before pretrained embeddings.  
 > Local run evidence: `outputs/chroma_rich/`
 
 ## One-change experiment log
@@ -19,11 +18,9 @@
 
 ## Hypothesis (pre-run)
 
-**Lesson grounding:** Part B next experiment / A4 “short clips weaken signal” thread — enrich the representation before abandoning tabular diagnostics.
-
 **Hypothesis:** An 84-d rich chroma vector preserves more within-chunk harmonic structure than global mean/std alone, so the same tree/MLP/LR comparison will improve, with tree remaining competitive.
 
-**Expected behavior:** Best rich model ≥ best 24-d model; gain large enough to keep chroma in the staged plan, but not large enough to claim a final portfolio model.
+**Expected behavior:** Best rich model ≥ best 24-d model; gain large enough to keep chroma in the staged plan, but not large enough to claim a final production model.
 
 ## Setup
 
@@ -34,7 +31,7 @@
 | 24 Krumhansl–Schmuckler correlations | 24 | Key-template match scores |
 | **Total** | **84** | |
 
-Models: HistGradientBoosting, scaled MLP (`hidden=128`), logistic regression — same fair protocol.
+Models: HistGradientBoosting, scaled MLP (`hidden=128`), logistic regression — same evaluation protocol.
 
 ## Commands
 
@@ -51,14 +48,14 @@ python ../assignment_6/run_chroma_rich_benchmark.py
 | Baseline 24-d | HistGradientBoosting | 40.3% | 0.31 |
 | **Rich 84-d** | **HistGradientBoosting** | **42.6%** | **0.36** |
 
-Rich MLP / LR remain ~35% test — neural still not justified.
+Rich MLP / LR remain ~35% test — MLP still trails the tree.
 
 **Vs expected:** Confirmed modest lift; tabular ceiling still visible on 15s clips.
 
 ## Diagnosis
 
-- Richer hand-built chroma helps (~2 pp) but is near a tabular ceiling.
-- Next fidelity step: pretrained audio embeddings / modality-specific models (Assignment 7 thread), not more MLP width on chroma summaries.
+- Richer hand-built chroma helps (~2 pp) but remains near a tabular ceiling.
+- Next fidelity step: pretrained audio embeddings / modality-specific models, not more MLP width on chroma summaries.
 
 ## Artifacts
 

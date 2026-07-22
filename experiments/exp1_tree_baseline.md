@@ -1,7 +1,6 @@
 # Experiment Report: exp6_chroma_tree (Exp 1)
 
 > **Reproducibility tag:** `seed=42` · clip `15s` · train-fit `StandardScaler`  
-> Classical tree baseline for Assignment 6 fair comparison.  
 > Local run evidence: `outputs/tree_runs/exp6_chroma_tree_*`
 
 ## One-change experiment log
@@ -10,8 +9,8 @@
 | --- | --- |
 | run_id | `exp6_chroma_tree` |
 | seed | **42** |
-| change | Model family: add `HistGradientBoostingClassifier` on the same 24-d chroma proxy used by A5 LR / MLP |
-| hypothesis | A nonlinear tree ensemble on pitch-class summaries should beat or match logistic regression (~34.6% test) without needing neural complexity. |
+| change | Model family: `HistGradientBoostingClassifier` on the same 24-d chroma proxy used by LR / MLP |
+| hypothesis | A nonlinear tree ensemble on pitch-class summaries will beat or match logistic regression (~34.6% test) without neural complexity. |
 | expected_signal | Test accuracy in the mid-to-high 30%s or low 40%s; possible train overfit with val/test still aligned. |
 | observed_signal | tree_best_test_but_train_memorized — test acc **40.3%**, train acc **100%**, val ≈ test (~40.3%) |
 | fixed_conditions | same song-level 70/15/15 splits, seed 42, 15s chroma, sample_weight = 1/n_chunks |
@@ -19,9 +18,7 @@
 
 ## Hypothesis (pre-run)
 
-**Lesson grounding:** Week 6 fair comparison recipe — a simple classical baseline must give the neural tabular model something meaningful to beat.
-
-**Hypothesis:** HistGradientBoosting on train-scaled chroma will capture nonlinear pitch-class interactions that linear LR misses, lifting test accuracy above the A5 LR band (~34.6%) while remaining cheap and interpretable enough as a monitoring baseline.
+**Hypothesis:** HistGradientBoosting on train-scaled chroma will capture nonlinear pitch-class interactions that linear LR misses, lifting test accuracy above the prior LR band (~34.6%) while remaining cheap to train.
 
 **Expected behavior:** Val/test accuracy ≥ LR; train–val gap may be large (trees can memorize) but val and test should still agree if the split is honest.
 
@@ -50,13 +47,13 @@ python ../assignment_6/train_key_chroma_tree.py --run-name exp6_chroma_tree
 | val | 40.3% | 0.33 |
 | test | **40.3%** | 0.31 |
 
-**Vs expected:** Confirmed on test lift vs LR (+~5.7 pp). Unexpected severity of train memorization (100% train) — still usable as a baseline because val/test align, but monitoring must watch train→prod gap.
+**Vs expected:** Confirmed on test lift vs LR (+~5.7 pp). Train memorization was more severe than anticipated (100% train). Val and test still align, so we treat the split as plausible and flag train→prod monitoring.
 
 ## Diagnosis
 
-- Tree is the **strongest 24-d tabular accuracy** in the main comparison.
-- Severe train overfit is a practical constraint (interpretability/monitoring), not a leakage indictment of the split.
-- Next: neural MLP under the same protocol to test whether added complexity is justified.
+- Tree is the strongest 24-d tabular accuracy in the main comparison.
+- Severe train overfit is a practical monitoring constraint, not evidence of split leakage.
+- Next: neural MLP under the same protocol to measure whether added complexity improves held-out metrics.
 
 ## Artifacts
 
